@@ -7,17 +7,17 @@ import { Sidebar } from "./sidebar";
 export const Navbar = () => {
    return (
       <nav className="border border-greed-600">
-         <Sheet>
-            <SheetTrigger asChild>
-               <span className="container h-14 flex items-center justify-between">
-                  <img
-                     loading="lazy"
-                     src="/dashboard/cs1.png"
-                     className="size-6 rounded-sm"
-                  />
+         <header className="container h-14 flex items-center justify-between">
+            <img
+               loading="lazy"
+               src="/dashboard/cs1.png"
+               className="size-6 rounded-sm"
+            />
 
-                  <Logo className="text-xl" />
+            <Logo className="text-xl" />
 
+            <Sheet>
+               <SheetTrigger asChild>
                   <Button
                      size="icon"
                      variant="ghost"
@@ -25,13 +25,13 @@ export const Navbar = () => {
                   >
                      <HamburgerMenuIcon />
                   </Button>
-               </span>
-            </SheetTrigger>
+               </SheetTrigger>
 
-            <SheetContent side="left" className="px-0 py-0">
-               <Sidebar />
-            </SheetContent>
-         </Sheet>
+               <SheetContent side="left" className="px-0 py-0">
+                  <Sidebar />
+               </SheetContent>
+            </Sheet>
+         </header>
       </nav>
    );
 };
