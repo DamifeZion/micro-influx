@@ -13,6 +13,7 @@ export const Navbar = () => {
             <SheetTrigger asChild>
                <span className="container h-14 flex items-center justify-between">
                   <img
+                     loading="lazy"
                      src="/dashboard/cs1.png"
                      className="size-6 rounded-sm"
                   />
