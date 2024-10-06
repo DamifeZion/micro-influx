@@ -3,7 +3,8 @@ export const routeConstants = {
    campaigns: "/campaign",
    createCampaign: "/campaign/create",
    campaignDetails: "/campaign/:id/details",
+   profile: "/profile",
    messages: "/messages",
    earnings: "/earnings",
    settings: "/settings",
-}
+};

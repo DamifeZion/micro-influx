@@ -1,4 +1,4 @@
-@import url('https://fonts.cdnfonts.com/css/roboto');
+@import url("https://fonts.cdnfonts.com/css/roboto");
 @import url("https://fonts.cdnfonts.com/css/pp-neue-montreal");
 
 @tailwind base;
@@ -15,7 +15,7 @@
       --popover-foreground: 224 71.4% 4.1%;
       --primary: 206 89% 18%;
       --primary-foreground: 0 0% 100%;
-      --secondary: 205 100% 95%;
+      --secondary: 205 99% 52%;
       --secondary-foreground: 206 89% 18%;
       --muted: 220 14.3% 95.9%;
       --muted-foreground: 220 8.9% 46.1%;

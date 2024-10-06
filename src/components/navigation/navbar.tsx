@@ -1,12 +1,10 @@
-import { HamburgerMenuIcon } from "@radix-ui/react-icons"
-import { Logo } from "../logo"
-import { Button } from "../ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet"
-import { Sidebar } from "./sidebar"
-
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { Logo } from "../logo";
+import { Button } from "../ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { Sidebar } from "./sidebar";
 
 export const Navbar = () => {
-
    return (
       <nav className="border border-greed-600">
          <Sheet>
@@ -20,7 +18,11 @@ export const Navbar = () => {
 
                   <Logo className="text-xl" />
 
-                  <Button size="icon" variant="ghost" className="text-primary *:size-6">
+                  <Button
+                     size="icon"
+                     variant="ghost"
+                     className="text-primary *:size-6"
+                  >
                      <HamburgerMenuIcon />
                   </Button>
                </span>
@@ -31,5 +33,5 @@ export const Navbar = () => {
             </SheetContent>
          </Sheet>
       </nav>
-   )
-}
+   );
+};

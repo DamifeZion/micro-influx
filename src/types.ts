@@ -41,12 +41,12 @@ export type TIconProps = {
 export type TMenuButtonProps = TNavigationMenu;
 
 export type TShortcutBtnProps = {
-   id: TCampaignItem['id'],
+   id: TCampaignItem["id"];
    src?: string;
-   title: TCampaignItem['title'],
-}
+   title: TCampaignItem["title"];
+};
 
 export type TFinancialOverview = {
    title: string;
    value: number;
-}
+};

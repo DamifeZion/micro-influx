@@ -6,9 +6,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { TooltipProvider } from "./components/ui/tooltip.tsx";
 import { Toaster } from "sonner";
 
-
 function App() {
-
    return (
       <Provider store={store}>
          <PersistGate persistor={persistor}>
@@ -17,11 +15,7 @@ function App() {
                   <Routes />
                </TooltipProvider>
 
-               <Toaster 
-                  closeButton 
-                  richColors 
-                  duration={6000} 
-               />
+               <Toaster closeButton richColors duration={6000} />
             </BrowserRouter>
          </PersistGate>
       </Provider>

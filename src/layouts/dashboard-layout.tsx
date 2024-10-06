@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { Navbar } from '@/components/navigation/navbar';
-import { Sidebar } from '@/components/navigation/sidebar';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { useMediaQuery } from '@/hooks/use-media-query';
-import { cn } from '@/lib/utils';
-import { TDashboardProps } from '@/types';
+import * as React from "react";
+import { Navbar } from "@/components/navigation/navbar";
+import { Sidebar } from "@/components/navigation/sidebar";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { cn } from "@/lib/utils";
+import { TDashboardProps } from "@/types";
 
 export const DashboardLayout: React.FC<TDashboardProps> = ({
    containerClassName,
    contentClassName,
-   children
+   children,
 }) => {
    const isDesktop = useMediaQuery("(min-width: 1024px)");
 
@@ -19,7 +19,12 @@ export const DashboardLayout: React.FC<TDashboardProps> = ({
    }, []);
 
    return (
-      <main className={cn("h-screen grid grid-rows-[auto_1fr] lg:grid-cols-[auto_1fr]", containerClassName)}>
+      <main
+         className={cn(
+            "h-screen grid grid-rows-[auto_1fr] lg:grid-cols-[auto_1fr]",
+            containerClassName
+         )}
+      >
          {!isDesktop && <Navbar />}
 
          {isDesktop && <Sidebar />}

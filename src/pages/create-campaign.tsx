@@ -3,7 +3,7 @@ import { routeConstants } from "@/constants/route-const";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { DashboardLayout } from "@/layouts/dashboard-layout";
 import { useLocation, useNavigate } from "react-router-dom";
-import * as React from 'react';
+import * as React from "react";
 import { CreateCampaignButton } from "@/components/campaign/create-campaign-btn";
 import { CreateCampaignForm } from "@/components/campaign/campaign-form";
 
@@ -17,13 +17,12 @@ const CreateCampaign = () => {
       if (location.pathname === routeConstants.createCampaign && isDesktop) {
          navigate(-1);
       }
-   }, [location.pathname, isDesktop, navigate])
-
+   }, [location.pathname, isDesktop, navigate]);
 
    if (isDesktop) {
       return (
          <Dialog>
-            <DialogTrigger >
+            <DialogTrigger>
                <CreateCampaignButton />
             </DialogTrigger>
 
@@ -31,22 +30,21 @@ const CreateCampaign = () => {
                <CreateCampaignForm />
             </DialogContent>
          </Dialog>
-      )
+      );
    }
 
    //In Mobile this is a page only if the page is create campaign, else we render a buton that links to the campaign page and then show the render component in the page
    return (
       <React.Fragment>
-         {location.pathname !== routeConstants.createCampaign ?
+         {location.pathname !== routeConstants.createCampaign ? (
             <CreateCampaignButton />
-            : (
-               <DashboardLayout>
-                  <CreateCampaignForm />
-               </DashboardLayout>
-            )
-         }
-      </React.Fragment >
-   )
-}
+         ) : (
+            <DashboardLayout>
+               <CreateCampaignForm />
+            </DashboardLayout>
+         )}
+      </React.Fragment>
+   );
+};
 
 export default CreateCampaign;

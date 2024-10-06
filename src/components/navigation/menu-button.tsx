@@ -1,9 +1,9 @@
-import { useIsRouteActive } from '@/hooks/use-is-route-active';
-import { TMenuButtonProps } from '@/types';
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '../ui/button';
-import { cn } from '@/lib/utils';
+import { useIsRouteActive } from "@/hooks/use-is-route-active";
+import { TMenuButtonProps } from "@/types";
+import * as React from "react";
+import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
 
 export const MenuButton: React.FC<TMenuButtonProps> = ({
    href,
@@ -16,7 +16,7 @@ export const MenuButton: React.FC<TMenuButtonProps> = ({
       <li>
          <Button
             asChild
-            variant={isRouteActive(href) ? "default" : 'ghost'}
+            variant={isRouteActive(href) ? "default" : "ghost"}
             className={cn("w-full py-5 justify-start gap-4")}
          >
             <Link to={href}>
@@ -26,5 +26,5 @@ export const MenuButton: React.FC<TMenuButtonProps> = ({
             </Link>
          </Button>
       </li>
-   )
-}
+   );
+};

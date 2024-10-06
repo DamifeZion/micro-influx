@@ -1,22 +1,25 @@
-import { CaretSortIcon } from "@radix-ui/react-icons"
-import { Logo } from "../logo"
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
-import { Button } from "../ui/button"
-import { ScrollArea } from "../ui/scroll-area"
-import Typography from "../ui/typography"
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
-import { CAMPAIGN_SHORTCUT, NAVIGATION_MENU } from "@/constants/navigation-const"
-import { MenuButton } from "./menu-button"
-import { useSelector } from "react-redux"
-import { RootState } from "@/services/store"
-import { ShortcutBtn } from "./shortcut-btn"
-import { routeConstants } from "@/constants/route-const"
-import { Link } from "react-router-dom"
-import { Notification } from "../notification/notification"
-
+import { CaretSortIcon } from "@radix-ui/react-icons";
+import { Logo } from "../logo";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
+import { ScrollArea } from "../ui/scroll-area";
+import Typography from "../ui/typography";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import {
+   CAMPAIGN_SHORTCUT,
+   NAVIGATION_MENU,
+} from "@/constants/navigation-const";
+import { MenuButton } from "./menu-button";
+import { useSelector } from "react-redux";
+import { RootState } from "@/services/store";
+import { ShortcutBtn } from "./shortcut-btn";
+import { routeConstants } from "@/constants/route-const";
+import { Link } from "react-router-dom";
+import { Notification } from "../notification/notification";
+import { ProfileInformation } from "../profile-information";
 
 export const Sidebar = () => {
-   const { campaigns } = useSelector((state: RootState) => state.campaignSlice)
+   const { campaigns } = useSelector((state: RootState) => state.campaignSlice);
 
    return (
       <aside className="w-full h-screen grid grid-rows-[auto_1fr] gap-5 py-6 px-2 bg-card shadow-[0_0_15px_rgb(0,0,0,0.05)] lg:w-[280px]">
@@ -32,7 +35,10 @@ export const Sidebar = () => {
             <div className="px-3 h-full flex flex-col">
                <Popover>
                   <PopoverTrigger asChild>
-                     <Button variant="ghost" className="w-full justify-start h-fit py-2 px-1.5 pr-0 flex items-start gap-2">
+                     <Button
+                        variant="ghost"
+                        className="w-full justify-start h-fit py-2 px-1.5 pr-0 flex items-start gap-2"
+                     >
                         <Avatar className="size-10 rounded-lg">
                            <AvatarImage src="/dashboard/profile.png" />
                            <AvatarFallback />
@@ -58,14 +64,15 @@ export const Sidebar = () => {
                </Popover>
 
                {/* Pages Button */}
-               <ul className="flex flex-col mt-6 gap-1 mb-20">
+               <ul className="flex flex-col mt-6 gap-1 lg:mb-20">
                   {NAVIGATION_MENU.map((item, index) => (
-                     <MenuButton
-                        key={index}
-                        {...item}
-                     />
+                     <MenuButton key={index} {...item} />
                   ))}
                </ul>
+
+               <div className="my-10 lg:hidden">
+                  <ProfileInformation />
+               </div>
 
                {/* Campaign ShortCuts */}
                <div className="mt-auto">
@@ -74,10 +81,12 @@ export const Sidebar = () => {
                         Campaign Shortcuts
                      </Typography>
 
-                     <Button asChild variant="secondary" className="px-2 py-1 text-[10px] font-normal rounded-sm h-fit">
-                        <Link to={routeConstants.campaigns}>
-                           View all
-                        </Link>
+                     <Button
+                        asChild
+                        variant="secondary"
+                        className="px-2 py-1 text-[10px] font-normal rounded-sm h-fit bg-secondary/20 hover:bg-secondary/15"
+                     >
+                        <Link to={routeConstants.campaigns}>View all</Link>
                      </Button>
                   </div>
 
@@ -96,11 +105,9 @@ export const Sidebar = () => {
                         </li>
                      ))}
                   </ul>
-
-
                </div>
             </div>
          </ScrollArea>
       </aside>
-   )
-}
+   );
+};

@@ -4,23 +4,28 @@ import { Notification } from "@/components/notification/notification";
 import Typography from "@/components/ui/typography";
 import { DashboardLayout } from "@/layouts/dashboard-layout";
 import CreateCampaign from "./create-campaign";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+   Card,
+   CardContent,
+   CardDescription,
+   CardHeader,
+   CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { routeConstants } from "@/constants/route-const";
 import { Link } from "react-router-dom";
 import { FINANCIAL_OVERVIEW, SUMMARY } from "@/constants/dashboard-const";
 import { ProfileInformation } from "@/components/profile-information";
-
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 const Dashboard = () => {
+   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
    return (
       <DashboardLayout>
          {/* Title and Quick Actions */}
          <section className="max-lg:mt-4 flex flex-wrap gap-x-4 gap-y-6 items-center justify-between">
-            <Typography className="text-primary">
-               Dashboard
-            </Typography>
+            <Typography className="text-primary">Dashboard</Typography>
 
             <div className="flex items-center gap-2">
                {/* On mobile we link to a page, desktop its a modal */}
@@ -29,7 +34,6 @@ const Dashboard = () => {
                <span className="max-lg:hidden lg:ml-2">
                   <Conversation />
                </span>
-
 
                <span className="max-lg:hidden">
                   <Notification />
@@ -46,9 +50,14 @@ const Dashboard = () => {
                   </CardTitle>
 
                   <CardDescription>
-                     <Button asChild variant="link" className="max-lg:p-0 max-lg:h-fit text-primary-foreground font-normal">
+                     <Button
+                        asChild
+                        variant="link"
+                        className="max-lg:p-0 max-lg:h-fit text-primary-foreground font-normal"
+                     >
                         <Link to={routeConstants.campaigns}>
-                           View all campaigns <FiExternalLink className="ml-2" />
+                           View all campaigns{" "}
+                           <FiExternalLink className="ml-2" />
                         </Link>
                      </Button>
                   </CardDescription>
@@ -74,12 +83,9 @@ const Dashboard = () => {
                         January Summary:
                      </Typography>
 
-
                      {SUMMARY.map((item, index) => (
                         <span key={index} className="inline-flex gap-2">
-                           <Typography>
-                              {item.title}
-                           </Typography>
+                           <Typography>{item.title}</Typography>
 
                            <li className="list-disc list-inside font-semibold tracking-wide">
                               ${item.value.toLocaleString()}
@@ -90,12 +96,10 @@ const Dashboard = () => {
                </CardContent>
             </Card>
 
-            <ProfileInformation />
+            {isDesktop && <ProfileInformation />}
          </section>
       </DashboardLayout>
-   )
-}
-
-
+   );
+};
 
 export default Dashboard;
