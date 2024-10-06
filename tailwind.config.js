@@ -20,8 +20,8 @@ export default {
             450: "450px",
          },
          fontFamily: {
-            1: "var(--font-1)",
-            2: "var(--font-2)",
+            heading: "var(--font-heading)",
+            body: "var(--font-body)",
          },
          fontSize: {
             md: "16px",
