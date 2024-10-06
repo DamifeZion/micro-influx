@@ -12,6 +12,7 @@ import { RootState } from "@/services/store"
 import { ShortcutBtn } from "./shortcut-btn"
 import { routeConstants } from "@/constants/route-const"
 import { Link } from "react-router-dom"
+import { Notification } from "../notification/notification"
 
 
 export const Sidebar = () => {
@@ -19,7 +20,13 @@ export const Sidebar = () => {
 
    return (
       <aside className="w-full h-screen grid grid-rows-[auto_1fr] gap-5 py-6 px-2 bg-card shadow-[0_0_15px_rgb(0,0,0,0.05)] lg:w-[280px]">
-         <Logo className="px-3.5" />
+         <div className="max-lg:mt-2 px-3.5 flex items-center justify-between">
+            <Logo />
+
+            <span className="lg:hidden">
+               <Notification />
+            </span>
+         </div>
 
          <ScrollArea>
             <div className="px-3 h-full flex flex-col">

@@ -6,7 +6,7 @@ import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 
 export const MenuButton: React.FC<TMenuButtonProps> = ({
-   href, 
+   href,
    icon: Icon,
    title,
 }) => {
@@ -14,16 +14,17 @@ export const MenuButton: React.FC<TMenuButtonProps> = ({
 
    return (
       <li>
-         <Link to={href}>
-            <Button
-               variant={isRouteActive(href) ? "default" : 'ghost'}
-               className={cn("w-full py-5 justify-start gap-4")}
-            >
+         <Button
+            asChild
+            variant={isRouteActive(href) ? "default" : 'ghost'}
+            className={cn("w-full py-5 justify-start gap-4")}
+         >
+            <Link to={href}>
                <Icon />
 
                {title}
-            </Button>
-         </Link>
+            </Link>
+         </Button>
       </li>
    )
 }
