@@ -45,3 +45,8 @@ export type TShortcutBtnProps = {
    src?: string;
    title: TCampaignItem['title'],
 }
+
+export type TFinancialOverview = {
+   title: string;
+   value: number;
+}
