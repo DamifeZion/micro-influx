@@ -6,10 +6,12 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 import { z } from "zod";
+import { TCampaignChannels } from "@/types"; // Import the correct type
 
 export const useCreateCampaign = () => {
    const dispatch = useDispatch();
 
+   // Define your form schema with the correct channel type
    const formSchema = z.object({
       title: z.string().min(1, {
          message: "Please enter campaign title",
@@ -24,7 +26,7 @@ export const useCreateCampaign = () => {
          message: "Please enter campaign description",
       }),
       channels: z
-         .array(z.enum(CAMPAIGN_CHANNELS as [string, ...string[]]))
+         .array(z.enum(CAMPAIGN_CHANNELS as [TCampaignChannels, ...TCampaignChannels[]])) // Strictly typed channels
          .min(1, {
             message: "Please select at least one campaign channel",
          }),
@@ -40,9 +42,8 @@ export const useCreateCampaign = () => {
          brand: "",
          category: "",
          description: "",
-         channels: [],
+         channels: [] as TCampaignChannels[], // Ensure channels are properly typed
          budget: "",
-        
       },
    });
 
@@ -54,7 +55,7 @@ export const useCreateCampaign = () => {
             date: new Date(),
          };
 
-         console.log(values);
+         console.log(newCampaign);
          dispatch(addCampaign(newCampaign));
 
          toast.success("Campaign created successfully");
