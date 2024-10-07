@@ -13,6 +13,7 @@ import { Button } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { routeConstants } from "@/constants/route-const";
 import { Link } from "react-router-dom";
+import { renderCampaignIcon } from "@/utils/render-campaign-icon";
 
 
 export const CampaignCard: React.FC<TCampaignCard> = ({
@@ -28,6 +29,7 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
 }) => {
    // cycle through the colors array using modulus
    const fallbackBG = CAMPAIGN_COLORS[index % CAMPAIGN_COLORS.length];
+   const visibleChannels = 4;
 
    return (
       <Card className="max-lg:bg-background max-lg:shadow-none max-lg:border-none max-lg:*:px-0 *:p-4">
@@ -87,7 +89,19 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
                   Channels
                </Typography>
 
-               lorem100
+               <div className="flex items-center gap-3 flex-wrap text-primary">
+                  {channels.slice(0, visibleChannels).map((item, index) => (
+                     <span key={index} className="*:size-5">
+                        {renderCampaignIcon(item)}
+                     </span>
+                  ))}
+
+                  {channels.length > visibleChannels && (
+                     <Typography className="text-sm font-medium text-gray-600">
+                        + {channels.length - visibleChannels} more
+                     </Typography>
+                  )}
+               </div>
             </div>
          </CardContent>
 
@@ -96,6 +110,10 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
                <Typography className="text-primary font-medium mt-2 text-sm">
                   Budget
                </Typography>
+
+               <Budget>
+                  {budget}
+               </Budget>
             </div>
 
             <Button asChild>

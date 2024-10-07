@@ -6,13 +6,22 @@ export type TLogoProps = React.HTMLAttributes<HTMLHeadingElement> & {
 
 export type TIsRouteActive = (path: string, matchSubroute?: boolean) => boolean;
 
+export type TCampaignChannels =
+   | "facebook"
+   | "instagram"
+   | "tiktok"
+   | "youtube"
+   | "twitter"
+   | "pinterest"
+   | "github";
+
 export type TCampaignItem = {
    id: string;
    title: string;
    brandName: string;
    category: string;
    description: string;
-   channels: Array<string>;
+   channels: Array<TCampaignChannels>;
    budget: string;
    date: Date;
 };
