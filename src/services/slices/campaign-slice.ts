@@ -9,7 +9,7 @@ const initialState: TCampaignSlice = {
          brandName: "Samsung",
          category: "Product Review",
          description:
-            "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn ....",
+            "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn",
          channels: [
             "instagram",
             "tiktok",
@@ -28,7 +28,7 @@ const initialState: TCampaignSlice = {
          brandName: "Samsung",
          category: "Product Review",
          description:
-            "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn ....",
+            "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn",
          channels: [
             "instagram",
             "tiktok",
@@ -47,7 +47,7 @@ const initialState: TCampaignSlice = {
          brandName: "Samsung",
          category: "Product Review",
          description:
-            "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn ....",
+            "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn",
          channels: [
             "instagram",
             "tiktok",
@@ -66,7 +66,7 @@ const initialState: TCampaignSlice = {
          brandName: "Samsung",
          category: "Product Review",
          description:
-            "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn ....",
+            "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn",
          channels: [
             "instagram",
             "tiktok",
@@ -85,7 +85,7 @@ const initialState: TCampaignSlice = {
          brandName: "Samsung",
          category: "Product Review",
          description:
-            "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn ....",
+            "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn",
          channels: [
             "instagram",
             "tiktok",
@@ -104,7 +104,7 @@ const initialState: TCampaignSlice = {
          brandName: "Samsung",
          category: "Product Review",
          description:
-            "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn ....",
+            "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn",
          channels: [
             "instagram",
             "tiktok",

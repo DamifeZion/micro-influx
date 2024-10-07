@@ -165,7 +165,9 @@ const Dashboard = () => {
                         </Typography>
                      )}
 
-                     <div className={cn("flex items-center  gap-6")}>
+                     <div className={cn("flex items-center gap-6", {
+                        "min-[590px]:ml-auto": (!searchQuery || !sortQuery)
+                     })}>
                         <FormField
                            name="sort"
                            control={form.control}
@@ -235,7 +237,7 @@ const Dashboard = () => {
          </section>
 
          {/* Campaign List  */}
-         <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+         <section className="mt-6 grid gap-y-4 gap-x-8 lg:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {campaigns.map((item, index) => (
                <CampaignCard 
                   key={index}
