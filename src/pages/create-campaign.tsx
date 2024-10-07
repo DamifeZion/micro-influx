@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+   Dialog,
+   DialogContent,
+   DialogDescription,
+   DialogHeader,
+   DialogTitle,
+   DialogTrigger,
+} from "@/components/ui/dialog";
 import { routeConstants } from "@/constants/route-const";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { DashboardLayout } from "@/layouts/dashboard-layout";
@@ -24,12 +31,18 @@ const CreateCampaign = () => {
 
    if (isDesktop) {
       return (
-         <Dialog open={openDialog} onOpenChange={() => setOpenDialog(prev => !prev)}>
+         <Dialog
+            open={openDialog}
+            onOpenChange={() => setOpenDialog((prev) => !prev)}
+         >
             <DialogTrigger>
                <CreateCampaignButton />
             </DialogTrigger>
 
-            <DialogContent overlayClassName="bg-transparent backdrop-blur-sm" className="px-0 pb-0 max-w-xl grid grid-rows-[auto_1fr_auto] shadow-none pb-0 bg-card">
+            <DialogContent
+               overlayClassName="bg-transparent backdrop-blur-sm"
+               className="px-0 pb-0 max-w-xl grid grid-rows-[auto_1fr_auto] shadow-none pb-0 bg-card"
+            >
                <DialogHeader className="px-6">
                   <DialogTitle className="text-primary font-medium">
                      Create Campaign
@@ -41,7 +54,7 @@ const CreateCampaign = () => {
                </DialogHeader>
 
                <ScrollArea>
-                  <CreateCampaignForm closeModal={() => setOpenDialog(false)}/>
+                  <CreateCampaignForm closeModal={() => setOpenDialog(false)} />
                </ScrollArea>
             </DialogContent>
          </Dialog>

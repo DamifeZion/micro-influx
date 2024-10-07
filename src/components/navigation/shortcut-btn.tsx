@@ -19,7 +19,9 @@ export const ShortcutBtn: React.FC<TShortcutBtnProps> = ({
    let fallbackBG;
 
    if (typeof index !== "undefined") {
-      fallbackBG = [...CAMPAIGN_COLORS].reverse()[index % CAMPAIGN_COLORS.length];
+      fallbackBG = [...CAMPAIGN_COLORS].reverse()[
+         index % CAMPAIGN_COLORS.length
+      ];
    }
 
    return (
@@ -33,13 +35,13 @@ export const ShortcutBtn: React.FC<TShortcutBtnProps> = ({
                <AvatarImage src={src} />
                <AvatarFallback
                   style={{ backgroundColor: fallbackBG }}
-                  className="rounded-sm text-primary-foreground"
+                  className="text-xs rounded-xs text-primary-foreground"
                >
                   {getInitials(title)}
                </AvatarFallback>
             </Avatar>
 
-            <Typography className="text-primary text-sm truncate">
+            <Typography className="text-sm truncate text-primary">
                {title}
             </Typography>
 

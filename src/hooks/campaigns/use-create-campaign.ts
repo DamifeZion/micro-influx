@@ -26,7 +26,11 @@ export const useCreateCampaign = () => {
          message: "Please enter campaign description",
       }),
       channels: z
-         .array(z.enum(CAMPAIGN_CHANNELS as [TCampaignChannels, ...TCampaignChannels[]])) // Strictly typed channels
+         .array(
+            z.enum(
+               CAMPAIGN_CHANNELS as [TCampaignChannels, ...TCampaignChannels[]]
+            )
+         ) // Strictly typed channels
          .min(1, {
             message: "Please select at least one campaign channel",
          }),

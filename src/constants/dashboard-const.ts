@@ -30,7 +30,12 @@ export const SUMMARY: Array<TFinancialOverview> = [
    },
 ];
 
-export const SORT_CAMPAIGNS: Array<string> = ["category", "budget"];
+export const SORT_CAMPAIGNS: Array<string> = [
+   "date created (newest first)",
+   "date created (oldest first)",
+   "price (low to high)",
+   "price (high to low)",
+];
 
 export const CAMPAIGN_COLORS: Array<string> = [
    "#B2007A",

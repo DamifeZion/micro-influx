@@ -43,7 +43,6 @@ import {
    SelectTrigger,
    SelectValue,
 } from "@/components/ui/select";
-import { capitalize } from "lodash";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 import {
    Tooltip,
@@ -51,6 +50,8 @@ import {
    TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { CampaignCard } from "@/components/campaign-card";
+import { capitalizeFirstLetters } from "@/utils/capitalize-first-letters";
+import { filterCampaign } from "@/utils/filter-campaigns";
 
 const Dashboard = () => {
    const isDesktop = useMediaQuery("(min-width: 1024px)");
@@ -60,8 +61,8 @@ const Dashboard = () => {
    return (
       <DashboardLayout>
          {/* Title and Quick Actions */}
-         <section className="max-lg:mt-4 flex flex-wrap gap-x-4 gap-y-6 items-center justify-between">
-            <Typography className="text-primary text-lg">Dashboard</Typography>
+         <section className="flex flex-wrap items-center justify-between max-lg:mt-4 gap-x-4 gap-y-6">
+            <Typography className="text-lg text-primary">Dashboard</Typography>
 
             <div className="flex items-center gap-2">
                {/* On mobile we link to a page, desktop its a modal */}
@@ -89,7 +90,7 @@ const Dashboard = () => {
                      <Button
                         asChild
                         variant="link"
-                        className="max-lg:p-0 max-lg:h-fit text-primary-foreground font-normal"
+                        className="font-normal max-lg:p-0 max-lg:h-fit text-primary-foreground"
                      >
                         <Link to={routeConstants.campaigns}>
                            View all campaigns{" "}
@@ -99,22 +100,22 @@ const Dashboard = () => {
                   </CardDescription>
                </CardHeader>
 
-               <CardContent className="pt-6 text-primary-foreground font-normal">
-                  <ul className="flex items-center flex-wrap gap-y-5 gap-x-10">
+               <CardContent className="pt-6 font-normal text-primary-foreground">
+                  <ul className="flex flex-wrap items-center gap-y-5 gap-x-10">
                      {FINANCIAL_OVERVIEW.map((item, index) => (
                         <li key={index}>
                            <Typography affects="small" className="font-normal">
                               {item.title}
                            </Typography>
 
-                           <Typography className="text-2xl font-medium mt-1">
+                           <Typography className="mt-1 text-2xl font-medium">
                               ${item.value.toLocaleString()}
                            </Typography>
                         </li>
                      ))}
                   </ul>
 
-                  <div className="mt-10 flex items-center flex-wrap gap-4">
+                  <div className="flex flex-wrap items-center gap-4 mt-10">
                      <Typography className="font-semibold">
                         January Summary:
                      </Typography>
@@ -123,7 +124,7 @@ const Dashboard = () => {
                         <span key={index} className="inline-flex gap-2">
                            <Typography>{item.title}</Typography>
 
-                           <li className="list-disc list-inside font-semibold tracking-wide">
+                           <li className="font-semibold tracking-wide list-disc list-inside">
                               ${item.value.toLocaleString()}
                            </li>
                         </span>
@@ -143,8 +144,8 @@ const Dashboard = () => {
                   onChange={() => !isDesktop && form.handleSubmit(onSubmit)()}
                   onSubmit={form.handleSubmit(onSubmit)}
                >
-                  <div className="flex items-center justify-between flex-wrap gap-4">
-                     <Typography className="text-primary font-heading text-lg">
+                  <div className="flex flex-wrap items-center justify-between gap-4">
+                     <Typography className="text-lg text-primary font-heading">
                         Explore Campaigns
                      </Typography>
 
@@ -152,19 +153,19 @@ const Dashboard = () => {
                         name="q"
                         control={form.control}
                         render={({ field }) => (
-                           <FormItem className="max-w-sm w-full">
+                           <FormItem className="w-full max-w-sm">
                               <FormControl>
-                                 <div className="flex items-center relative">
+                                 <div className="relative flex items-center">
                                     <Input
                                        placeholder="Search Description"
-                                       className="bg-secondary/20 border-none pr-12 h-10"
+                                       className="h-10 pr-12 border-none bg-secondary/20"
                                        {...field}
                                     />
 
                                     {isDesktop && (
                                        <Button
                                           size="icon"
-                                          className="absolute top-0 right-0 h-full w-10"
+                                          className="absolute top-0 right-0 w-10 h-full"
                                        >
                                           <BiSearch className="size-4" />
                                        </Button>
@@ -176,11 +177,11 @@ const Dashboard = () => {
                      />
                   </div>
 
-                  <div className="mt-4 flex flex-wrap-reverse justify-between gap-4 items-center text-sm">
+                  <div className="flex flex-wrap-reverse items-center justify-between gap-4 mt-4 text-sm">
                      {(searchQuery || sortQuery) && (
                         <Typography className="whitespace-nowrap">
                            Search results:{" "}
-                           <span className="text-primary font-medium">
+                           <span className="font-medium text-primary">
                               {campaigns.length} Blog post
                            </span>{" "}
                            campaigns
@@ -197,7 +198,7 @@ const Dashboard = () => {
                            control={form.control}
                            render={({ field }) => (
                               <FormItem className="flex items-center space-y-0">
-                                 <FormLabel className="min-w-fit font-normal mr-2">
+                                 <FormLabel className="mr-2 font-normal min-w-fit">
                                     Sort by:
                                  </FormLabel>
 
@@ -225,7 +226,7 @@ const Dashboard = () => {
                                                 value={item}
                                                 className="text-sm"
                                              >
-                                                {capitalize(item)}
+                                                {capitalizeFirstLetters(item)}
                                              </SelectItem>
                                           ))}
                                        </SelectContent>
@@ -278,10 +279,12 @@ const Dashboard = () => {
          </section>
 
          {/* Campaign List  */}
-         <section className="mt-6 grid gap-y-4 gap-x-8 lg:gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {campaigns.map((item, index) => (
-               <CampaignCard key={index} index={index} {...item} />
-            ))}
+         <section className="grid mt-6 gap-y-4 gap-x-8 lg:gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {filterCampaign(campaigns, searchQuery, sortQuery).map(
+               (item, index) => (
+                  <CampaignCard key={index} index={index} {...item} />
+               )
+            )}
          </section>
       </DashboardLayout>
    );

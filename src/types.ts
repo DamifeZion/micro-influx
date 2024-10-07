@@ -15,7 +15,20 @@ export type TCampaignChannels =
    | "pinterest"
    | "github";
 
-export type TCampaignCategory = "product review" | "product launch" | "brand awareness" | "influencer collaboration" | "Social media engagement" | "customer feedback" | "content creation" | "lead generation" | "event promotion" | "discount or special offers" | "referral program" | "user-generated content" | "market research"
+export type TCampaignCategory =
+   | "product review"
+   | "product launch"
+   | "brand awareness"
+   | "influencer collaboration"
+   | "Social media engagement"
+   | "customer feedback"
+   | "content creation"
+   | "lead generation"
+   | "event promotion"
+   | "discount or special offers"
+   | "referral program"
+   | "user-generated content"
+   | "market research";
 
 export type TCampaignItem = {
    id: string;
@@ -68,7 +81,12 @@ export type TCampaignCard = TCampaignItem & {
    index: number;
 };
 
-
 export type TCreateCampaignFormProp = {
    closeModal?: () => void;
-}
+};
+
+export type TFilterCampaign = (
+   array: Array<TCampaignItem>,
+   searchQuery: string,
+   sortQuery: string
+) => Array<TCampaignItem> | [];
