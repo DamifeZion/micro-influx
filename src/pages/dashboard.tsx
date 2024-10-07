@@ -16,27 +16,46 @@ import {
 import { Button } from "@/components/ui/button";
 import { routeConstants } from "@/constants/route-const";
 import { Link } from "react-router-dom";
-import { FINANCIAL_OVERVIEW, SORT_CAMPAIGNS, SUMMARY } from "@/constants/dashboard-const";
+import {
+   FINANCIAL_OVERVIEW,
+   SORT_CAMPAIGNS,
+   SUMMARY,
+} from "@/constants/dashboard-const";
 import { ProfileInformation } from "@/components/profile-information";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import {
+   Form,
+   FormControl,
+   FormField,
+   FormItem,
+   FormLabel,
+} from "@/components/ui/form";
 import { useDashboard } from "@/hooks/use-dashboard";
 import { Input } from "@/components/ui/input";
 import { BiSearch } from "react-icons/bi";
 import { RootState } from "@/services/store";
 import { useSelector } from "react-redux";
 import { cn } from "@/lib/utils";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+   Select,
+   SelectContent,
+   SelectItem,
+   SelectTrigger,
+   SelectValue,
+} from "@/components/ui/select";
 import { capitalize } from "lodash";
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+   Tooltip,
+   TooltipContent,
+   TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { CampaignCard } from "@/components/campaign-card";
 
 const Dashboard = () => {
    const isDesktop = useMediaQuery("(min-width: 1024px)");
-   const { campaigns } = useSelector((state: RootState) => state.campaignSlice)
-   const { form, onSubmit, searchQuery, sortQuery } = useDashboard()
-
+   const { campaigns } = useSelector((state: RootState) => state.campaignSlice);
+   const { form, onSubmit, searchQuery, sortQuery } = useDashboard();
 
    return (
       <DashboardLayout>
@@ -143,7 +162,10 @@ const Dashboard = () => {
                                     />
 
                                     {isDesktop && (
-                                       <Button size="icon" className="absolute top-0 right-0 h-full w-10">
+                                       <Button
+                                          size="icon"
+                                          className="absolute top-0 right-0 h-full w-10"
+                                       >
                                           <BiSearch className="size-4" />
                                        </Button>
                                     )}
@@ -157,17 +179,19 @@ const Dashboard = () => {
                   <div className="mt-4 flex flex-wrap-reverse justify-between gap-4 items-center text-sm">
                      {(searchQuery || sortQuery) && (
                         <Typography className="whitespace-nowrap">
-                           Search results: {" "}
+                           Search results:{" "}
                            <span className="text-primary font-medium">
                               {campaigns.length} Blog post
-                           </span> {" "}
+                           </span>{" "}
                            campaigns
                         </Typography>
                      )}
 
-                     <div className={cn("flex items-center gap-6", {
-                        "min-[590px]:ml-auto": (!searchQuery || !sortQuery)
-                     })}>
+                     <div
+                        className={cn("flex items-center gap-6", {
+                           "min-[590px]:ml-auto": !searchQuery || !sortQuery,
+                        })}
+                     >
                         <FormField
                            name="sort"
                            control={form.control}
@@ -178,19 +202,29 @@ const Dashboard = () => {
                                  </FormLabel>
 
                                  <FormControl>
-                                    <Select defaultValue={sortQuery || field.value} onValueChange={(values) => {
-                                       field.onChange(values);
-                                       form.handleSubmit(onSubmit)()
-                                    }}>
+                                    <Select
+                                       defaultValue={sortQuery || field.value}
+                                       onValueChange={(values) => {
+                                          field.onChange(values);
+                                          form.handleSubmit(onSubmit)();
+                                       }}
+                                    >
                                        <SelectTrigger
-                                          rightIcon={<CaretDownIcon className="size-5 opacity-60" />}
-                                          className="bg-secondary/20 text-sm text-primary font-medium h-fit py-1.5 border-none gap-2">
+                                          rightIcon={
+                                             <CaretDownIcon className="size-5 opacity-60" />
+                                          }
+                                          className="bg-secondary/20 text-sm text-primary font-medium h-fit py-1.5 border-none gap-2"
+                                       >
                                           <SelectValue />
                                        </SelectTrigger>
 
                                        <SelectContent>
                                           {SORT_CAMPAIGNS.map((item, index) => (
-                                             <SelectItem key={index} value={item} className="text-sm">
+                                             <SelectItem
+                                                key={index}
+                                                value={item}
+                                                className="text-sm"
+                                             >
                                                 {capitalize(item)}
                                              </SelectItem>
                                           ))}
@@ -201,7 +235,10 @@ const Dashboard = () => {
                            )}
                         />
 
-                        <div id="layout-triggers" className="flex items-center gap-2">
+                        <div
+                           id="layout-triggers"
+                           className="flex items-center gap-2"
+                        >
                            <Tooltip>
                               <TooltipTrigger>
                                  <Button size="icon" variant="secondary">
@@ -218,7 +255,11 @@ const Dashboard = () => {
 
                            <Tooltip>
                               <TooltipTrigger>
-                                 <Button size="icon" variant="ghost" className="hover:bg-muted-foreground/10">
+                                 <Button
+                                    size="icon"
+                                    variant="ghost"
+                                    className="hover:bg-muted-foreground/10"
+                                 >
                                     <BiListUl className="size-6" />
                                  </Button>
                               </TooltipTrigger>
@@ -239,11 +280,7 @@ const Dashboard = () => {
          {/* Campaign List  */}
          <section className="mt-6 grid gap-y-4 gap-x-8 lg:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {campaigns.map((item, index) => (
-               <CampaignCard 
-                  key={index}
-                  index={index}
-                  {...item}
-               />
+               <CampaignCard key={index} index={index} {...item} />
             ))}
          </section>
       </DashboardLayout>

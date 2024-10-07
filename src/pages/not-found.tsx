@@ -11,9 +11,7 @@ const NotFound = () => {
          </Typography>
 
          <Button asChild className="mt-4">
-            <Link to={routeConstants.dashboard}>
-               Go to Dashboard
-            </Link>
+            <Link to={routeConstants.dashboard}>Go to Dashboard</Link>
          </Button>
       </div>
    );

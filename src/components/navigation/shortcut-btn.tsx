@@ -17,9 +17,9 @@ export const ShortcutBtn: React.FC<TShortcutBtnProps> = ({
 }) => {
    // cycle through the colors array using modulus
    let fallbackBG;
-   
-   if (typeof index !== 'undefined') {
-      fallbackBG = CAMPAIGN_COLORS[index % CAMPAIGN_COLORS.length]
+
+   if (typeof index !== "undefined") {
+      fallbackBG = CAMPAIGN_COLORS[index % CAMPAIGN_COLORS.length];
    }
 
    return (
@@ -31,7 +31,10 @@ export const ShortcutBtn: React.FC<TShortcutBtnProps> = ({
          <Link to={routeConstants.campaignDetails.replace(":id", id)}>
             <Avatar className="rounded-sm size-6">
                <AvatarImage src={src} />
-               <AvatarFallback style={{ backgroundColor: fallbackBG }} className="rounded-sm text-primary-foreground">
+               <AvatarFallback
+                  style={{ backgroundColor: fallbackBG }}
+                  className="rounded-sm text-primary-foreground"
+               >
                   {getInitials(title)}
                </AvatarFallback>
             </Avatar>

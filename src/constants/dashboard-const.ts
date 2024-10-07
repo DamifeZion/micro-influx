@@ -28,4 +28,11 @@ export const SUMMARY: Array<TFinancialOverview> = [
 
 export const SORT_CAMPAIGNS: Array<string> = ["category", "budget"];
 
-export const CAMPAIGN_COLORS: Array<string> = ["#B2007A", "#FF3700", "#FFAA00", "#0571FF", "#B2007A", "#00B20F"]
+export const CAMPAIGN_COLORS: Array<string> = [
+   "#B2007A",
+   "#FF3700",
+   "#FFAA00",
+   "#0571FF",
+   "#B2007A",
+   "#00B20F",
+];
