@@ -13,7 +13,7 @@ import { Button } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { routeConstants } from "@/constants/route-const";
 import { Link } from "react-router-dom";
-import { renderCampaignIcon } from "@/utils/render-campaign-icon";
+import { renderCampaignIcon } from "@/components/campaign/render-campaign-icon";
 
 export const CampaignCard: React.FC<TCampaignCard> = ({
    index,
