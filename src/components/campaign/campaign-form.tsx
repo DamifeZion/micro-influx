@@ -16,6 +16,7 @@ import { TCreateCampaignFormProp } from "@/types";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import Typography from "../ui/typography";
+import { useNavigate } from "react-router-dom";
 
 export const CreateCampaignForm: React.FC<TCreateCampaignFormProp> = ({ closeModal }) => {
    const navigate = useNavigate();
