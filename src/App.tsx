@@ -11,7 +11,7 @@ function App() {
       <Provider store={store}>
          <PersistGate persistor={persistor}>
             <BrowserRouter>
-               <TooltipProvider>
+               <TooltipProvider delayDuration={100}>
                   <Routes />
                </TooltipProvider>
 

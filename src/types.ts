@@ -12,8 +12,9 @@ export type TCampaignItem = {
    brandName: string;
    category: string;
    description: string;
-   preferredChannel: Array<string>;
-   budget: number;
+   channels: Array<string>;
+   budget: string;
+   date: Date;
 };
 
 export type TCampaignSlice = {
@@ -49,4 +50,8 @@ export type TShortcutBtnProps = {
 export type TFinancialOverview = {
    title: string;
    value: number;
+};
+
+export type TCampaignCard = TCampaignItem & {
+   index: number;
 };
