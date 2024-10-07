@@ -191,7 +191,7 @@ const Dashboard = () => {
                      )}
 
                      <div
-                        className={cn("flex items-center gap-6", {
+                        className={cn("flex items-center gap-6 flex-wrap", {
                            "min-[590px]:ml-auto": !searchQuery || !sortQuery,
                         })}
                      >
