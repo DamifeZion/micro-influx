@@ -14,13 +14,26 @@ import { renderCampaignIcon } from "./render-campaign-icon";
 import { Label } from "../ui/label";
 import { TCreateCampaignFormProp } from "@/types";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import Typography from "../ui/typography";
 
 export const CreateCampaignForm: React.FC<TCreateCampaignFormProp> = ({ closeModal }) => {
+   const navigate = useNavigate();
    const isDesktop = useMediaQuery("(min-width: 1024px)");
    const { form, onSubmit } = useCreateCampaign();
 
    return (
       <React.Fragment>
+         {!isDesktop && (
+            <Button onClick={() => navigate(-1)} className="py-6 px-0 flex items-center gap-2 text-primary bg-transparent border-none shadow-none hover:bg-transparent">
+               <ArrowLeftIcon className="size-4" />
+
+               <Typography>
+                  Create Campaign
+               </Typography>
+            </Button>
+         )}
+
          <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="[&_input]:border-2 [&_input]:bg-transparent [&_input]:border-muted-foreground/30 [&_textarea]:border-2 [&_textarea]:border-muted-foreground/30 [&_label]:text-primary [&_textarea]:bg-transparent">
                <div className="space-y-2 lg:px-6">
@@ -194,10 +207,10 @@ export const CreateCampaignForm: React.FC<TCreateCampaignFormProp> = ({ closeMod
 
                </div>
 
-               <div className="mt-3 flex items-center justify-center lg:w-full lg:sticky lg:bottom-0 lg:bg-card lg:pt-3">
-                  <Button 
+               <div className="mt-8 max-lg:mb-10 flex items-center justify-center lg:w-full lg:sticky lg:bottom-0 lg:bg-card lg:mt-3 lg:pt-3">
+                  <Button
                      onClick={() => form.formState.isValid && isDesktop && closeModal && closeModal()}
-                     className="px-6"
+                     className="px-6 max-lg:w-full max-lg:py-6 max-lg:max-w-[90%]"
                   >
                      Create New Campaign
                   </Button>
