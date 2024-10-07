@@ -111,9 +111,9 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
                   Budget
                </Typography>
 
-               <Budget>
+               <Typography>
                   {budget}
-               </Budget>
+               </Typography>
             </div>
 
             <Button asChild>
