@@ -90,5 +90,5 @@ export type TFilterCampaign = (
    array: Array<TCampaignItem>,
    searchQuery: string,
    sortQuery: string,
-   categoryQuery: string;
+   categoryQuery: string,
 ) => Array<TCampaignItem> | [];
