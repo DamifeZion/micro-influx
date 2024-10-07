@@ -99,7 +99,7 @@ export const Sidebar = () => {
                      ))}
 
                      {/* Dynamic Data */}
-                     {campaigns.slice(0, 4).map((item, index) => (
+                     {[...campaigns].reverse().slice(0, 4).map((item, index) => (
                         <li key={index}>
                            <ShortcutBtn index={index} {...item} />
                         </li>
