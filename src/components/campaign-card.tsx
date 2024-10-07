@@ -102,8 +102,24 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
                         {renderCampaignIcon(item)}
                      </span>
                   ))}
-                  
-                  
+
+                  <Tooltip>
+                     <TooltipTrigger>
+                        {channels.length > visibleChannels && (
+                           <Typography className="text-sm font-medium text-gray-600">
+                              + {channels.length - visibleChannels} more
+                           </Typography>
+                        )}
+                     </TooltipTrigger>
+
+                     <TooltipContent className="flex flex-wrap items-center gap-2">
+                        {channels.slice(visibleChannels).map((item, index) => (
+                           <span key={index} className="*:size-5">
+                              {renderCampaignIcon(item)}
+                           </span>
+                        ))}
+                     </TooltipContent>
+                  </Tooltip>
                </div>
             </div>
          </CardContent>
