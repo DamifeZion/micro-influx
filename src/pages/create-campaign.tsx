@@ -1,11 +1,12 @@
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import * as React from "react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { routeConstants } from "@/constants/route-const";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { DashboardLayout } from "@/layouts/dashboard-layout";
 import { useLocation, useNavigate } from "react-router-dom";
-import * as React from "react";
 import { CreateCampaignButton } from "@/components/campaign/create-campaign-btn";
 import { CreateCampaignForm } from "@/components/campaign/campaign-form";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const CreateCampaign = () => {
    const location = useLocation();
@@ -26,8 +27,22 @@ const CreateCampaign = () => {
                <CreateCampaignButton />
             </DialogTrigger>
 
-            <DialogContent>
-               <CreateCampaignForm />
+            <DialogContent overlayClassName="bg-transparent backdrop-blur-sm" className="grid grid-rows-[auto_1fr_auto] shadow-none px-2 pb-0 bg-card">
+               <DialogHeader className="px-4">
+                  <DialogTitle className="text-primary font-medium">
+                     Create Campaign
+                  </DialogTitle>
+
+                  <DialogDescription className="sr-only">
+                     Fill in the form details below to create a new campaign
+                  </DialogDescription>
+               </DialogHeader>
+
+               <ScrollArea>
+                  <div className="px-4 py-2">
+                     <CreateCampaignForm />
+                  </div>
+               </ScrollArea>
             </DialogContent>
          </Dialog>
       );

@@ -15,6 +15,8 @@ export type TCampaignChannels =
    | "pinterest"
    | "github";
 
+export type TCampaignCategory = "product review" | "product launch" | "brand awareness" | "influencer collaboration" | "Social media engagement" | "customer feedback" | "content creation" | "lead generation" | "event promotion" | "discount or special offers" | "referral program" | "user-generated content" | "market research"
+
 export type TCampaignItem = {
    id: string;
    title: string;

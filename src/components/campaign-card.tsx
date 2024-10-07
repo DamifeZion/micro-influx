@@ -33,7 +33,7 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
    return (
       <Card className="max-lg:bg-background max-lg:shadow-none max-lg:border-none max-lg:*:px-0 *:p-4">
          <CardHeader className="grid grid-cols-[auto_1fr] gap-2">
-            <Avatar className="rounded-sm size-12">
+            <Avatar className="rounded-sm xl:size-12">
                <AvatarFallback
                   style={{ backgroundColor: fallbackBG }}
                   className="rounded-sm font-medium text-primary-foreground"
@@ -48,10 +48,10 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
                      {title}
                   </Typography>
 
-                  <div className="flex flex-wrap-reverse items-center gap-1.5 justify-end justify-end lg:w-full min-[1300px]:w-auto">
+                  <div className="flex flex-wrap-reverse items-center gap-1.5 justify-end lg:w-full min-[1300px]:w-auto">
                      <Tooltip>
                         <TooltipTrigger>
-                           <Typography className="text-[10px] sm:max-w-[72px] lg:max-w-fit xl:max-w-[72px] truncate">
+                           <Typography className="text-[10px] sm:max-w-[72px] lg:max-w-auto xl:max-w-[72px] truncate">
                               Posted {moment(date).fromNow()}
                            </Typography>
                         </TooltipTrigger>
@@ -112,22 +112,26 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
             </div>
          </CardContent>
 
-         <CardFooter className="!pt-0  justify-between">
+         <CardFooter className="pt-2 flex-wrap justify-between gap-y-4 gap-x-16">
             <div>
-               <Typography className="text-primary font-medium mt-2 text-sm">
+               <Typography className="text-primary font-medium text-sm">
                   Budget
                </Typography>
 
-               <Typography>
-                  {budget.split(" - ").map((item, index) => (
-                     <span key={index} className="text-primary font-semibold">
+               <Typography className="text-primary font-semibold whitespace-nowrap text-lg">
+                  {budget.includes(' - ') ? budget.split(" - ").map((item, index) => (
+                     <span key={index}>
                         $ {item} {index === 0 && " - "}
                      </span>
-                  ))}
+                  )) : (
+                     <span >
+                        {budget}
+                     </span>
+                  )}
                </Typography>
             </div>
 
-            <Button asChild>
+            <Button asChild className="max-[352px]:flex-grow lg:flex-grow px-7 ">
                <Link to={routeConstants.campaignDetails.replace(":id", id)}>
                   Apply Now
                </Link>

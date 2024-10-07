@@ -1,4 +1,8 @@
-import { TFinancialOverview } from "@/types";
+import {
+   TCampaignCategory,
+   TCampaignChannels,
+   TFinancialOverview,
+} from "@/types";
 
 export const FINANCIAL_OVERVIEW: Array<TFinancialOverview> = [
    {
@@ -35,4 +39,30 @@ export const CAMPAIGN_COLORS: Array<string> = [
    "#0571FF",
    "#B2007A",
    "#00B20F",
+];
+
+export const CAMPAIGN_CHANNELS: Array<TCampaignChannels> = [
+   "facebook",
+   "instagram",
+   "tiktok",
+   "youtube",
+   "twitter",
+   "pinterest",
+   "github",
+];
+
+export const CAMPAIGN_CATEGORY: Array<TCampaignCategory> = [
+   "product review",
+   "product launch",
+   "brand awareness",
+   "influencer collaboration",
+   "Social media engagement",
+   "customer feedback",
+   "content creation",
+   "lead generation",
+   "event promotion",
+   "discount or special offers",
+   "referral program",
+   "user-generated content",
+   "market research",
 ];
