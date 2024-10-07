@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { routeConstants } from "@/constants/route-const";
 import { Link } from "react-router-dom";
 import {
+   CAMPAIGN_CATEGORY,
    FINANCIAL_OVERVIEW,
    SORT_CAMPAIGNS,
    SUMMARY,
@@ -56,7 +57,7 @@ import { filterCampaign } from "@/utils/filter-campaigns";
 const Dashboard = () => {
    const isDesktop = useMediaQuery("(min-width: 1024px)");
    const { campaigns } = useSelector((state: RootState) => state.campaignSlice);
-   const { form, onSubmit, searchQuery, sortQuery } = useDashboard();
+   const { form, onSubmit, searchQuery, sortQuery, categoryQuery } = useDashboard();
 
    return (
       <DashboardLayout>
@@ -236,6 +237,51 @@ const Dashboard = () => {
                            )}
                         />
 
+                        {form.watch('sort') === (SORT_CAMPAIGNS[0] || "category") && (
+                           <FormField
+                              name="category"
+                              control={form.control}
+                              render={({ field }) => (
+                                 <FormItem className="flex items-center space-y-0">
+                                    <FormLabel className="mr-2 font-normal min-w-fit">
+                                       Category:
+                                    </FormLabel>
+
+                                    <FormControl>
+                                       <Select
+                                          defaultValue={categoryQuery || field.value}
+                                          onValueChange={(values) => {
+                                             field.onChange(values);
+                                             form.handleSubmit(onSubmit)();
+                                          }}
+                                       >
+                                          <SelectTrigger
+                                             rightIcon={
+                                                <CaretDownIcon className="size-5 opacity-60" />
+                                             }
+                                             className="bg-secondary/20 text-sm text-primary font-medium h-fit py-1.5 border-none gap-2"
+                                          >
+                                             <SelectValue />
+                                          </SelectTrigger>
+
+                                          <SelectContent>
+                                             {CAMPAIGN_CATEGORY.map((item, index) => (
+                                                <SelectItem
+                                                   key={index}
+                                                   value={item}
+                                                   className="text-sm"
+                                                >
+                                                   {capitalizeFirstLetters(item)}
+                                                </SelectItem>
+                                             ))}
+                                          </SelectContent>
+                                       </Select>
+                                    </FormControl>
+                                 </FormItem>
+                              )}
+                           />
+                        )}
+
                         <div
                            id="layout-triggers"
                            className="flex items-center gap-2"
@@ -280,7 +326,7 @@ const Dashboard = () => {
 
          {/* Campaign List  */}
          <section className="grid mt-6 gap-y-4 gap-x-8 lg:gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filterCampaign(campaigns, searchQuery, sortQuery).map(
+            {filterCampaign(campaigns, searchQuery, sortQuery, categoryQuery).map(
                (item, index) => (
                   <CampaignCard key={index} index={index} {...item} />
                )

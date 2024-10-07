@@ -4,16 +4,18 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { debounce } from "lodash";
 import { useSearchParams } from "react-router-dom";
-import { SORT_CAMPAIGNS } from "@/constants/dashboard-const";
+import { CAMPAIGN_CATEGORY, SORT_CAMPAIGNS } from "@/constants/dashboard-const";
 
 export const useDashboard = () => {
    const [searchParams, setSearchParams] = useSearchParams();
    const searchQuery = searchParams.get("q") ?? "";
    const sortQuery = searchParams.get("sort") ?? SORT_CAMPAIGNS[0];
+   const categoryQuery = searchParams.get("category") ?? "";
 
    const formSchema = z.object({
       q: z.string().optional(),
       sort: z.string().optional(),
+      category: z.string().optional(),
    });
 
    const form = useForm<z.infer<typeof formSchema>>({
@@ -21,6 +23,7 @@ export const useDashboard = () => {
       defaultValues: {
          q: "",
          sort: SORT_CAMPAIGNS[0],
+         category: ""
       },
    });
 
@@ -46,5 +49,6 @@ export const useDashboard = () => {
       onSubmit,
       searchQuery,
       sortQuery,
+      categoryQuery
    };
 };

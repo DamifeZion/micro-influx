@@ -16,6 +16,7 @@ export type TCampaignChannels =
    | "github";
 
 export type TCampaignCategory =
+"entertainment" | "movie" | "games"
    | "product review"
    | "product launch"
    | "brand awareness"
@@ -88,5 +89,6 @@ export type TCreateCampaignFormProp = {
 export type TFilterCampaign = (
    array: Array<TCampaignItem>,
    searchQuery: string,
-   sortQuery: string
+   sortQuery: string,
+   categoryQuery: string;
 ) => Array<TCampaignItem> | [];

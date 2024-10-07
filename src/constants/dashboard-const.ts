@@ -31,6 +31,7 @@ export const SUMMARY: Array<TFinancialOverview> = [
 ];
 
 export const SORT_CAMPAIGNS: Array<string> = [
+   "category",
    "date created (newest first)",
    "date created (oldest first)",
    "price (low to high)",
@@ -57,6 +58,9 @@ export const CAMPAIGN_CHANNELS: Array<TCampaignChannels> = [
 ];
 
 export const CAMPAIGN_CATEGORY: Array<TCampaignCategory> = [
+   "entertainment",
+   "movie",
+   "games",
    "product review",
    "product launch",
    "brand awareness",

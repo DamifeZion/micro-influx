@@ -3,7 +3,8 @@ import { TCampaignItem, TFilterCampaign } from "@/types";
 export const filterCampaign: TFilterCampaign = (
    array,
    searchQuery,
-   sortQuery
+   sortQuery,
+   categoryQuery
 ) => {
    // First: Filter the array based on the search query (searching by title)
    let newArray: Array<TCampaignItem> = array.filter((item: TCampaignItem) =>
@@ -13,9 +14,14 @@ export const filterCampaign: TFilterCampaign = (
    //Step 2: We sort the filtered results based on the selected sort query
    switch (sortQuery) {
       case "category":
-         newArray = newArray.filter((item: TCampaignItem) =>
-            item.category.toLowerCase().includes(searchQuery.toLowerCase())
-         );
+         newArray = newArray.filter((item: TCampaignItem) => {
+            if (categoryQuery) {
+               return item.category.toLowerCase() === categoryQuery.toLowerCase()
+            }
+            else {
+               return item;
+            }
+         })
          break;
       case "budget":
          newArray = newArray.filter((item: TCampaignItem) =>
