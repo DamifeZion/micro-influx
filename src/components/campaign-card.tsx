@@ -89,7 +89,7 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
                   Channels
                </Typography>
 
-               <div className="flex items-center gap-3 flex-wrap text-primary">
+               <div className="mt-1 flex items-center gap-3 flex-wrap text-primary">
                   {channels.slice(0, visibleChannels).map((item, index) => (
                      <span key={index} className="*:size-5">
                         {renderCampaignIcon(item)}
@@ -112,7 +112,12 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
                </Typography>
 
                <Typography>
-                  {budget}
+                  {budget.split(" - ").map((item, index) => (
+                     <span key={index} className="text-primary font-semibold">
+                        $ {item} {index === 0 && " - "}
+                     </span>
+
+                  ))}
                </Typography>
             </div>
 
