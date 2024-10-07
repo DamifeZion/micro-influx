@@ -57,7 +57,8 @@ import { filterCampaign } from "@/utils/filter-campaigns";
 const Dashboard = () => {
    const isDesktop = useMediaQuery("(min-width: 1024px)");
    const { campaigns } = useSelector((state: RootState) => state.campaignSlice);
-   const { form, onSubmit, searchQuery, sortQuery, categoryQuery } = useDashboard();
+   const { form, onSubmit, searchQuery, sortQuery, categoryQuery } =
+      useDashboard();
 
    return (
       <DashboardLayout>
@@ -237,7 +238,8 @@ const Dashboard = () => {
                            )}
                         />
 
-                        {form.watch('sort') === (SORT_CAMPAIGNS[0] || "category") && (
+                        {form.watch("sort") ===
+                           (SORT_CAMPAIGNS[0] || "category") && (
                            <FormField
                               name="category"
                               control={form.control}
@@ -249,7 +251,9 @@ const Dashboard = () => {
 
                                     <FormControl>
                                        <Select
-                                          defaultValue={categoryQuery || field.value}
+                                          defaultValue={
+                                             categoryQuery || field.value
+                                          }
                                           onValueChange={(values) => {
                                              field.onChange(values);
                                              form.handleSubmit(onSubmit)();
@@ -265,15 +269,19 @@ const Dashboard = () => {
                                           </SelectTrigger>
 
                                           <SelectContent>
-                                             {CAMPAIGN_CATEGORY.map((item, index) => (
-                                                <SelectItem
-                                                   key={index}
-                                                   value={item}
-                                                   className="text-sm"
-                                                >
-                                                   {capitalizeFirstLetters(item)}
-                                                </SelectItem>
-                                             ))}
+                                             {CAMPAIGN_CATEGORY.map(
+                                                (item, index) => (
+                                                   <SelectItem
+                                                      key={index}
+                                                      value={item}
+                                                      className="text-sm"
+                                                   >
+                                                      {capitalizeFirstLetters(
+                                                         item
+                                                      )}
+                                                   </SelectItem>
+                                                )
+                                             )}
                                           </SelectContent>
                                        </Select>
                                     </FormControl>
@@ -326,11 +334,14 @@ const Dashboard = () => {
 
          {/* Campaign List  */}
          <section className="grid mt-6 gap-y-4 gap-x-8 lg:gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filterCampaign(campaigns, searchQuery, sortQuery, categoryQuery).map(
-               (item, index) => (
-                  <CampaignCard key={index} index={index} {...item} />
-               )
-            )}
+            {filterCampaign(
+               campaigns,
+               searchQuery,
+               sortQuery,
+               categoryQuery
+            ).map((item, index) => (
+               <CampaignCard key={index} index={index} {...item} />
+            ))}
          </section>
       </DashboardLayout>
    );

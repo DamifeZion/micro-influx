@@ -16,12 +16,13 @@ export const filterCampaign: TFilterCampaign = (
       case "category":
          newArray = newArray.filter((item: TCampaignItem) => {
             if (categoryQuery) {
-               return item.category.toLowerCase() === categoryQuery.toLowerCase()
-            }
-            else {
+               return (
+                  item.category.toLowerCase() === categoryQuery.toLowerCase()
+               );
+            } else {
                return item;
             }
-         })
+         });
          break;
       case "budget":
          newArray = newArray.filter((item: TCampaignItem) =>
