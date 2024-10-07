@@ -42,7 +42,7 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
 
             <div className="grid items-center gap-1.5">
                <span className='flex flex-wrap gap-1 items-center justify-between'>
-                  <Typography className='font-semibold font-heading !leading-none lg:text-lg'>
+                  <Typography className='font-semibold font-heading !leading-none lg:text-lg lg:truncate lg:max-w-[90%] min-[1300px]:max-w-[63%] min-[1300px]:overflow-hidden'>
                      {title}
                   </Typography>
 

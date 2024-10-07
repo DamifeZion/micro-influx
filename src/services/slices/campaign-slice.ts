@@ -43,7 +43,7 @@ const initialState: TCampaignSlice = {
       },
       {
          id: "1",
-         title: "Epic Social Buzz",
+         title: "Viral Social Sparks",
          brandName: "Samsung",
          category: "Product Review",
          description:
@@ -62,7 +62,7 @@ const initialState: TCampaignSlice = {
       },
       {
          id: "1",
-         title: "Epic Social Buzz",
+         title: "Connect & Trend",
          brandName: "Samsung",
          category: "Product Review",
          description:
@@ -81,7 +81,7 @@ const initialState: TCampaignSlice = {
       },
       {
          id: "1",
-         title: "Epic Social Buzz",
+         title: "Engage & Share",
          brandName: "Samsung",
          category: "Product Review",
          description:
@@ -100,7 +100,7 @@ const initialState: TCampaignSlice = {
       },
       {
          id: "1",
-         title: "Epic Social Buzz",
+         title: "Dynamic Social Pulse",
          brandName: "Samsung",
          category: "Product Review",
          description:
