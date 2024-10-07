@@ -7,8 +7,12 @@ import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 import { z } from "zod";
 import { TCampaignChannels } from "@/types"; // Import the correct type
+import { useMediaQuery } from "../use-media-query";
+import { useNavigate } from "react-router-dom";
 
 export const useCreateCampaign = () => {
+   const isMobile = useMediaQuery("(max-width: 1023px)");
+   const navigate = useNavigate();
    const dispatch = useDispatch();
 
    // Define your form schema with the correct channel type
@@ -62,6 +66,10 @@ export const useCreateCampaign = () => {
          console.log(newCampaign);
          dispatch(addCampaign(newCampaign));
 
+         //On mobile screen its a page not modal, so go back on sucess
+         if (isMobile) {
+            navigate(-1);
+         }
          toast.success("Campaign created successfully");
       } catch (error) {
          console.error(error);
