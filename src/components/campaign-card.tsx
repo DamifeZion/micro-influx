@@ -31,7 +31,7 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
    const visibleChannels = 4;
 
    return (
-      <Card className="max-lg:bg-background max-lg:shadow-none max-lg:border-none max-lg:*:px-0 *:p-4">
+      <Card className="max-lg:border-l-0 max-lg:border-t-0 max-lg:border-r-0 max-lg:border-b max-lg:border-muted-foreground/40  max-lg:bg-background max-lg:rounded-none max-lg:shadow-none max-lg:*:px-0 *:p-4">
          <CardHeader className="grid grid-cols-[auto_1fr] gap-2">
             <Avatar className="rounded-sm xl:size-12">
                <AvatarFallback
@@ -102,12 +102,8 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
                         {renderCampaignIcon(item)}
                      </span>
                   ))}
-
-                  {channels.length > visibleChannels && (
-                     <Typography className="text-sm font-medium text-gray-600">
-                        + {channels.length - visibleChannels} more
-                     </Typography>
-                  )}
+                  
+                  
                </div>
             </div>
          </CardContent>
