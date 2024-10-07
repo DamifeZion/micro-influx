@@ -42,11 +42,11 @@ export const CAMPAIGN_COLORS: Array<string> = [
 ];
 
 export const CAMPAIGN_CHANNELS: Array<TCampaignChannels> = [
-   "facebook",
    "instagram",
    "tiktok",
    "youtube",
    "twitter",
+   "facebook",
    "pinterest",
    "github",
 ];

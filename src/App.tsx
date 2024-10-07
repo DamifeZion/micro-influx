@@ -15,7 +15,7 @@ function App() {
                   <Routes />
                </TooltipProvider>
 
-               <Toaster closeButton richColors duration={6000} />
+               <Toaster position="top-center" closeButton richColors duration={6000} />
             </BrowserRouter>
          </PersistGate>
       </Provider>

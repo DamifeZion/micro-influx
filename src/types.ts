@@ -20,7 +20,7 @@ export type TCampaignCategory = "product review" | "product launch" | "brand awa
 export type TCampaignItem = {
    id: string;
    title: string;
-   brandName: string;
+   brand: string;
    category: string;
    description: string;
    channels: Array<TCampaignChannels>;
@@ -67,3 +67,8 @@ export type TFinancialOverview = {
 export type TCampaignCard = TCampaignItem & {
    index: number;
 };
+
+
+export type TCreateCampaignFormProp = {
+   closeModal?: () => void;
+}

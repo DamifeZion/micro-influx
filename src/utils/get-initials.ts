@@ -1,5 +1,4 @@
 export const getInitials = (name: string): string => {
-   
    // Split the name by spaces
    const words = name.split(" ");
    // First letter of the first word
@@ -11,11 +10,11 @@ export const getInitials = (name: string): string => {
    const symbolPattern = /^[A-Za-z]/;
    if (words[1] && symbolPattern.test(words[1])) {
       secondInitial = words[1][0].toUpperCase();
-   } else if (words[2].length > 1) {
-      // Use the first letter of the third word if it's long enough
+   } else if (words[2] && words[2].length > 1) {
+      // Use the first letter of the third word if it exists and is long enough
       secondInitial = words[2][0].toUpperCase();
-   } else if (words[1]) {
-      // Fallback to the second letter of the third word
+   } else if (words[0].length > 1) {
+      // Fallback to the second letter of the first word if it's long enough
       secondInitial = words[0][1].toUpperCase();
    }
 

@@ -6,7 +6,7 @@ const initialState: TCampaignSlice = {
       {
          id: "1",
          title: "Epic Social Buzz",
-         brandName: "Samsung",
+         brand: "Samsung",
          category: "Product Review",
          description:
             "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn",
@@ -25,7 +25,7 @@ const initialState: TCampaignSlice = {
       {
          id: "1",
          title: "Epic Social Buzz",
-         brandName: "Samsung",
+         brand: "Samsung",
          category: "Product Review",
          description:
             "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn",
@@ -44,7 +44,7 @@ const initialState: TCampaignSlice = {
       {
          id: "1",
          title: "Viral Social Sparks",
-         brandName: "Samsung",
+         brand: "Samsung",
          category: "Product Review",
          description:
             "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn",
@@ -63,7 +63,7 @@ const initialState: TCampaignSlice = {
       {
          id: "1",
          title: "Connect & Trend",
-         brandName: "Samsung",
+         brand: "Samsung",
          category: "Product Review",
          description:
             "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn",
@@ -82,7 +82,7 @@ const initialState: TCampaignSlice = {
       {
          id: "1",
          title: "Engage & Share",
-         brandName: "Samsung",
+         brand: "Samsung",
          category: "Product Review",
          description:
             "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn",
@@ -101,7 +101,7 @@ const initialState: TCampaignSlice = {
       {
          id: "1",
          title: "Dynamic Social Pulse",
-         brandName: "Samsung",
+         brand: "Samsung",
          category: "Product Review",
          description:
             "Aliquam massa donec proin sit duis magna eu maecenas. Ultricies id mattis lobortis proin congue proin elementum. Sed ac porttitor metus ante et suspesstn",

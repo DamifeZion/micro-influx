@@ -18,7 +18,7 @@ import { renderCampaignIcon } from "@/components/campaign/render-campaign-icon";
 export const CampaignCard: React.FC<TCampaignCard> = ({
    index,
    id,
-   brandName,
+   brand,
    budget,
    category,
    description,
@@ -76,7 +76,7 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
 
                <ul className="flex flex-wrap items-center gap-1">
                   <Typography className=" text-sm lg:text-xs xl:text-md">
-                     {capitalize(brandName)}
+                     {capitalize(brand)}
                   </Typography>
 
                   <li className="list-disc list-inside  text-sm lg:text-xs xl:text-md">
@@ -112,26 +112,28 @@ export const CampaignCard: React.FC<TCampaignCard> = ({
             </div>
          </CardContent>
 
-         <CardFooter className="pt-2 flex-wrap justify-between gap-y-4 gap-x-16">
+         <CardFooter className="pt-2 flex-wrap justify-between gap-y-4 gap-x-5">
             <div>
                <Typography className="text-primary font-medium text-sm">
                   Budget
                </Typography>
 
                <Typography className="text-primary font-semibold whitespace-nowrap text-lg">
-                  {budget.includes(' - ') ? budget.split(" - ").map((item, index) => (
+                  {budget.includes('-') ? budget.split("-").map((item, index) => (
                      <span key={index}>
-                        $ {item} {index === 0 && " - "}
+                        $ {Number(item).toLocaleString()} {index === 0 && " - "}
                      </span>
                   )) : (
                      <span >
-                        {budget}
+                        $ {budget}
                      </span>
                   )}
                </Typography>
             </div>
 
-            <Button asChild className="max-[352px]:flex-grow lg:flex-grow px-7 ">
+            <Button asChild className={cn("max-[352px]:flex-grow lg:flex-grow min-[1202px]:max-w-[100px]", {
+               "lg:w-full min-[1202px]:w-auto": !budget.includes("-")
+            })}>
                <Link to={routeConstants.campaignDetails.replace(":id", id)}>
                   Apply Now
                </Link>

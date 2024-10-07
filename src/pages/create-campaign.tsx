@@ -20,15 +20,17 @@ const CreateCampaign = () => {
       }
    }, [location.pathname, isDesktop, navigate]);
 
+   const [openDialog, setOpenDialog] = React.useState<boolean>(false);
+
    if (isDesktop) {
       return (
-         <Dialog>
+         <Dialog open={openDialog} onOpenChange={() => setOpenDialog(prev => !prev)}>
             <DialogTrigger>
                <CreateCampaignButton />
             </DialogTrigger>
 
-            <DialogContent overlayClassName="bg-transparent backdrop-blur-sm" className="grid grid-rows-[auto_1fr_auto] shadow-none px-2 pb-0 bg-card">
-               <DialogHeader className="px-4">
+            <DialogContent overlayClassName="bg-transparent backdrop-blur-sm" className="px-0 pb-0 max-w-xl grid grid-rows-[auto_1fr_auto] shadow-none pb-0 bg-card">
+               <DialogHeader className="px-6">
                   <DialogTitle className="text-primary font-medium">
                      Create Campaign
                   </DialogTitle>
@@ -39,9 +41,7 @@ const CreateCampaign = () => {
                </DialogHeader>
 
                <ScrollArea>
-                  <div className="px-4 py-2">
-                     <CreateCampaignForm />
-                  </div>
+                  <CreateCampaignForm closeModal={() => setOpenDialog(false)}/>
                </ScrollArea>
             </DialogContent>
          </Dialog>
