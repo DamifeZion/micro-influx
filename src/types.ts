@@ -51,6 +51,7 @@ export type TIconProps = {
 export type TMenuButtonProps = TNavigationMenu;
 
 export type TShortcutBtnProps = {
+   index?: number;
    id: TCampaignItem["id"];
    src?: string;
    title: TCampaignItem["title"];

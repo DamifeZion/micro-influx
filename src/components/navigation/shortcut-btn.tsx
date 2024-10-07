@@ -7,12 +7,21 @@ import { CaretRightIcon } from "@radix-ui/react-icons";
 import { routeConstants } from "@/constants/route-const";
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
+import { CAMPAIGN_COLORS } from "@/constants/dashboard-const";
 
 export const ShortcutBtn: React.FC<TShortcutBtnProps> = ({
+   index,
    id,
    title,
    src,
 }) => {
+   // cycle through the colors array using modulus
+   let fallbackBG;
+   
+   if (typeof index !== 'undefined') {
+      fallbackBG = CAMPAIGN_COLORS[index % CAMPAIGN_COLORS.length]
+   }
+
    return (
       <Button
          asChild
@@ -22,7 +31,7 @@ export const ShortcutBtn: React.FC<TShortcutBtnProps> = ({
          <Link to={routeConstants.campaignDetails.replace(":id", id)}>
             <Avatar className="rounded-sm size-6">
                <AvatarImage src={src} />
-               <AvatarFallback className="rounded-sm">
+               <AvatarFallback style={{ backgroundColor: fallbackBG }} className="rounded-sm text-primary-foreground">
                   {getInitials(title)}
                </AvatarFallback>
             </Avatar>
