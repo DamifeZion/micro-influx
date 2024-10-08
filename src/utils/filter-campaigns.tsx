@@ -8,7 +8,7 @@ export const filterCampaign: TFilterCampaign = (
 ) => {
    // First: Filter the array based on the search query (searching by title)
    let newArray: Array<TCampaignItem> = array.filter((item: TCampaignItem) =>
-      item.title.toLowerCase().includes(searchQuery.toLowerCase())
+      item.title.trim().toLowerCase().includes(searchQuery.trim().toLowerCase())
    );
 
    //Step 2: We sort the filtered results based on the selected sort query
@@ -26,7 +26,7 @@ export const filterCampaign: TFilterCampaign = (
          break;
       case "budget":
          newArray = newArray.filter((item: TCampaignItem) =>
-            item.budget.toLowerCase().includes(searchQuery.toLowerCase())
+            item.budget.trim().toLowerCase().includes(searchQuery.trim().toLowerCase())
          );
          break;
       case "date created (newest first)":
