@@ -184,7 +184,12 @@ const Dashboard = () => {
                         <Typography className="whitespace-nowrap">
                            Search results:{" "}
                            <span className="font-medium text-primary">
-                              {campaigns.length} Blog post
+                              {filterCampaign(
+                                 campaigns,
+                                 searchQuery,
+                                 sortQuery,
+                                 categoryQuery
+                              ).length} Blog post
                            </span>{" "}
                            campaigns
                         </Typography>
@@ -240,55 +245,55 @@ const Dashboard = () => {
 
                         {form.watch("sort") ===
                            (SORT_CAMPAIGNS[0] || "category") && (
-                           <FormField
-                              name="category"
-                              control={form.control}
-                              render={({ field }) => (
-                                 <FormItem className="flex items-center space-y-0">
-                                    <FormLabel className="mr-2 font-normal min-w-fit">
-                                       Category:
-                                    </FormLabel>
+                              <FormField
+                                 name="category"
+                                 control={form.control}
+                                 render={({ field }) => (
+                                    <FormItem className="flex items-center space-y-0">
+                                       <FormLabel className="mr-2 font-normal min-w-fit">
+                                          Category:
+                                       </FormLabel>
 
-                                    <FormControl>
-                                       <Select
-                                          defaultValue={
-                                             categoryQuery || field.value
-                                          }
-                                          onValueChange={(values) => {
-                                             field.onChange(values);
-                                             form.handleSubmit(onSubmit)();
-                                          }}
-                                       >
-                                          <SelectTrigger
-                                             rightIcon={
-                                                <CaretDownIcon className="size-5 opacity-60" />
+                                       <FormControl>
+                                          <Select
+                                             defaultValue={
+                                                categoryQuery || field.value
                                              }
-                                             className="bg-secondary/20 text-sm text-primary font-medium h-fit py-1.5 border-none gap-2"
+                                             onValueChange={(values) => {
+                                                field.onChange(values);
+                                                form.handleSubmit(onSubmit)();
+                                             }}
                                           >
-                                             <SelectValue />
-                                          </SelectTrigger>
+                                             <SelectTrigger
+                                                rightIcon={
+                                                   <CaretDownIcon className="size-5 opacity-60" />
+                                                }
+                                                className="bg-secondary/20 text-sm text-primary font-medium h-fit py-1.5 border-none gap-2"
+                                             >
+                                                <SelectValue />
+                                             </SelectTrigger>
 
-                                          <SelectContent>
-                                             {CAMPAIGN_CATEGORY.map(
-                                                (item, index) => (
-                                                   <SelectItem
-                                                      key={index}
-                                                      value={item}
-                                                      className="text-sm"
-                                                   >
-                                                      {capitalizeFirstLetters(
-                                                         item
-                                                      )}
-                                                   </SelectItem>
-                                                )
-                                             )}
-                                          </SelectContent>
-                                       </Select>
-                                    </FormControl>
-                                 </FormItem>
-                              )}
-                           />
-                        )}
+                                             <SelectContent>
+                                                {CAMPAIGN_CATEGORY.map(
+                                                   (item, index) => (
+                                                      <SelectItem
+                                                         key={index}
+                                                         value={item}
+                                                         className="text-sm"
+                                                      >
+                                                         {capitalizeFirstLetters(
+                                                            item
+                                                         )}
+                                                      </SelectItem>
+                                                   )
+                                                )}
+                                             </SelectContent>
+                                          </Select>
+                                       </FormControl>
+                                    </FormItem>
+                                 )}
+                              />
+                           )}
 
                         <div
                            id="layout-triggers"
